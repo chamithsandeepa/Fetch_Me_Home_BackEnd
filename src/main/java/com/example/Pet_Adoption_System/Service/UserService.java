@@ -31,5 +31,14 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-}
 
+    public User authenticateUser(String email, String password) {
+        User user = userRepository.findByEmail(email);
+
+        // Verify the plain-text password (not secure; better to hash passwords in production)
+        if (user != null && user.getPassword().equals(password)) {
+            return user;
+        }
+        return null;
+    }
+}
