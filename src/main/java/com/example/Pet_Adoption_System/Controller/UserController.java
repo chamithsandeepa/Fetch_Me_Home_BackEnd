@@ -1,4 +1,40 @@
 package com.example.Pet_Adoption_System.Controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import com.example.Pet_Adoption_System.Model.User;
+import com.example.Pet_Adoption_System.Service.UserService;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:5173") // Allow requests from React app
+@RequestMapping("api/users")
 public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/all")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody User user) {
+        // Validate input
+        if (user.getName() == null || user.getEmail() == null || user.getPassword() == null || user.getConfirmPassword() == null) {
+            return ResponseEntity.badRequest().body("All fields are required.");
+        }
+
+        // Check if password and confirmPassword match
+        if (!user.getPassword().equals(user.getConfirmPassword())) {
+            return ResponseEntity.badRequest().body("Passwords do not match.");
+        }
+
+        User registeredUser = userService.registerUser(user);
+        return ResponseEntity.ok(registeredUser);
+    }
 }
