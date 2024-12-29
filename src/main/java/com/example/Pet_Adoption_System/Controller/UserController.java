@@ -1,10 +1,10 @@
 package com.example.Pet_Adoption_System.Controller;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import com.example.Pet_Adoption_System.Model.User;
 import com.example.Pet_Adoption_System.Service.UserService;
 
@@ -36,5 +36,19 @@ public class UserController {
 
         User registeredUser = userService.registerUser(user);
         return ResponseEntity.ok(registeredUser);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user) {
+        if (user.getEmail() == null || user.getPassword() == null) {
+            return ResponseEntity.badRequest().body("Email and password are required.");
+        }
+
+        User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
+
+        if (authenticatedUser != null) {
+            return ResponseEntity.ok("Login successful. Welcome, " + authenticatedUser.getName() + "!");
+        }
+        return ResponseEntity.status(401).body("Invalid credentials.");
     }
 }
