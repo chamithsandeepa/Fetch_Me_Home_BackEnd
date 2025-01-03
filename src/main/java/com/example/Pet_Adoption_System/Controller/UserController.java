@@ -50,5 +50,6 @@ public class UserController {
     //         return ResponseEntity.ok("Login successful. Welcome, " + authenticatedUser.getName() + "!");
     //     }
     //     return ResponseEntity.status(401).body("Invalid credentials.");
-    }
+    // }
+}
 
