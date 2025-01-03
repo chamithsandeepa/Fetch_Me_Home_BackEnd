@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.Pet_Adoption_System.Model.Pet;
 import com.example.Pet_Adoption_System.Service.PetService;
 
+@RestController
 public class PetController {
     
 }
