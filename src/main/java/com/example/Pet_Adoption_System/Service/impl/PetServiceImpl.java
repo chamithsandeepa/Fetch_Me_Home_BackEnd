@@ -38,7 +38,18 @@ public class PetServiceImpl implements PetService {
        return pet.orElse(null);
     }
 
+    @Override
+    public Pet updatePet(Integer id, Pet pet) {
+        if(petRepository.existsById(id)){
+            pet.setId(id);
+            return petRepository.save(pet);
+        }
+        return null;
+    }
 
-
-
+    // @Override
+    // public void deletePet(Integer id) {
+    //     petRepository.deleteById(id);
+    // }
 }
+
