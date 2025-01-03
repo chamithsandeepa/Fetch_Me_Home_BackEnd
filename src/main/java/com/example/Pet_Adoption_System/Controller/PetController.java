@@ -16,9 +16,15 @@ public class PetController {
     @Autowired
     private PetService petService;
 
-    @GetMapping
+    @GetMapping("/allPets")
     public ResponseEntity<List<Pet>> getAllPets() {
         List<Pet> pets = petService.getAllPets();
         return ResponseEntity.ok(pets);
+    }
+
+    @PostMapping("/addPet")
+    public ResponseEntity<Pet> addPet(@RequestBody Pet pet) {
+     Pet addPet = petService.addPet(pet);
+     return ResponseEntity.ok(addPet);
     }
 }
