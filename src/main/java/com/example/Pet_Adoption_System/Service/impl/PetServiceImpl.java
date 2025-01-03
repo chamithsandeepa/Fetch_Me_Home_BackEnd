@@ -27,15 +27,18 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
+    public List<Pet> getAllPets() {
+        // Retrieve all pet documents from the collection
+        return petRepository.findAll();
+    }
+
+    @Override
     public Pet getPetById(Integer id) {
         Optional<Pet> pet = petRepository.findById(id);
        return pet.orElse(null);
     }
 
-    @Override
-    public List<Pet> getAllPets() {
-        // Retrieve all pet documents from the collection
-        return petRepository.findAll();
-    }
+
+
 
 }
