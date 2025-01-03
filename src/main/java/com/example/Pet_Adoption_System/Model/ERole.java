@@ -1,5 +1,9 @@
 package com.example.Pet_Adoption_System.Model;
 
-public class ERole {
-    
-}
+
+public enum ERole {
+    ROLE_USER,
+    ROLE_MODERATOR,
+    ROLE_ADMIN
+  }
+

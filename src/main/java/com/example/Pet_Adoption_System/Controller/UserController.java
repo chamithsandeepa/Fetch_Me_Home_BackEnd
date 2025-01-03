@@ -38,17 +38,17 @@ public class UserController {
         return ResponseEntity.ok(registeredUser);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody User user) {
-        if (user.getEmail() == null || user.getPassword() == null) {
-            return ResponseEntity.badRequest().body("Email and password are required.");
-        }
+    // @PostMapping("/login")
+    // public ResponseEntity<?> login(@RequestBody User user) {
+    //     if (user.getEmail() == null || user.getPassword() == null) {
+    //         return ResponseEntity.badRequest().body("Email and password are required.");
+    //     }
 
-        User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
+    //     User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
 
-        if (authenticatedUser != null) {
-            return ResponseEntity.ok("Login successful. Welcome, " + authenticatedUser.getName() + "!");
-        }
-        return ResponseEntity.status(401).body("Invalid credentials.");
+    //     if (authenticatedUser != null) {
+    //         return ResponseEntity.ok("Login successful. Welcome, " + authenticatedUser.getName() + "!");
+    //     }
+    //     return ResponseEntity.status(401).body("Invalid credentials.");
     }
-}
+
