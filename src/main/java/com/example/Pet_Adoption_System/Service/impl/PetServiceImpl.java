@@ -47,9 +47,9 @@ public class PetServiceImpl implements PetService {
         return null;
     }
 
-    // @Override
-    // public void deletePet(Integer id) {
-    //     petRepository.deleteById(id);
-    // }
+    @Override
+    public void deletePet(Integer id) {
+        petRepository.deleteById(id);
+    }
 }
 
