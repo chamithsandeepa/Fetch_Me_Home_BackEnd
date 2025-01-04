@@ -15,7 +15,8 @@ public class User {
     private String name; // Changed from separate firstName and lastName
     private String email;
     private String password;
-    private String confirmPassword; // Add this field for password confirmation
+    private String confirmPassword;
+    private String role; // Add this field for password confirmation
 
     // Getter for full name if needed
     public String getFullName() {
@@ -61,5 +62,14 @@ public class User {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
+
+    public String getRole() {
+        return role; 
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+     
 }
 
