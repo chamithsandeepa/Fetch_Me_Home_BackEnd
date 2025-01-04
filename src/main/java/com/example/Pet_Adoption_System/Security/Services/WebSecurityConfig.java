@@ -1,4 +1,4 @@
-package com.example.Pet_Adoption_System.Security;
+package com.example.Pet_Adoption_System.Security.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
