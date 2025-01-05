@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Setter
-public class Pet implements List<Pet> {
+public class Pet {
     @Id
     private Integer id;
     private String name;
