@@ -14,16 +14,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class User {
     @Id
     private String id;
-    private String name;
+    private String username;
     private String email;
     private String password;
     private String confirmPassword;
     private String role; // Add this field for password confirmation
-
-     
+ 
 }
 

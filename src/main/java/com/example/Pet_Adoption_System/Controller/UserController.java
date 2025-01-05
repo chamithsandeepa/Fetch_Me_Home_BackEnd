@@ -25,7 +25,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         // Validate input
-        if (user.getName() == null || user.getEmail() == null || user.getPassword() == null || user.getConfirmPassword() == null) {
+        if (user.getUsername() == null || user.getEmail() == null || user.getPassword() == null || user.getConfirmPassword() == null) {
             return ResponseEntity.badRequest().body("All fields are required.");
         }
 
@@ -47,7 +47,7 @@ public class UserController {
         User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
 
         if (authenticatedUser != null) {
-            return ResponseEntity.ok("Login successful. Welcome, " + authenticatedUser.getName() + "!");
+            return ResponseEntity.ok("Login successful. Welcome, " + authenticatedUser.getUsername() + "!");
         }
         return ResponseEntity.status(401).body("Invalid credentials.");
     }

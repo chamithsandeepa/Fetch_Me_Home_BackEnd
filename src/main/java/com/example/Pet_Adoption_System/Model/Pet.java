@@ -7,14 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.AllArgsConstructor;
 
 @Document(collection = "Pets")
 @Data
 @Getter
 @NoArgsConstructor
 @Setter
-@AllArgsConstructor
 public class Pet {
     @Id
     private Integer id;
