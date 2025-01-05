@@ -1,5 +1,7 @@
 package com.example.Pet_Adoption_System.Model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,7 +15,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Setter
-public class Pet {
+public class Pet implements List<Pet> {
     @Id
     private Integer id;
     private String name;

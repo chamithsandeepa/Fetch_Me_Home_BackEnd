@@ -14,6 +14,8 @@ public interface PetService {
     void  deletePet(Integer id);
     List<Pet> getAvailablePets(Boolean adopted);
     Pet adoptPet(Integer id);
+    List<Pet> getPetsBySex(String sex);
+    List<Pet> getPetsByBreed(String breed);
 
     
 }
