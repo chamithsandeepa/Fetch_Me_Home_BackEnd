@@ -9,6 +9,7 @@ import java.util.List;
 public interface UserService {
 
     User registerUser(User user);
+    User LoginUser(String email, String password);
     User getUserById(String id);
     List<User> getAllUsers();
     User updateUser(String id, User user);

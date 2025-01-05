@@ -36,6 +36,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User LoginUser(String email, String password) {
+        User user = userRepository.findByEmail(email);
+        if (user!= null && user.getPassword().equals(password)) {
+            return user;
+        }else {
+            throw new RuntimeException("Invalid Login");
+        }
+    }
+
+    @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
