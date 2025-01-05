@@ -18,7 +18,7 @@ import lombok.Setter;
 public class User {
     @Id
     private String id;
-    private String name; // Changed from separate firstName and lastName
+    private String name;
     private String email;
     private String password;
     private String confirmPassword;

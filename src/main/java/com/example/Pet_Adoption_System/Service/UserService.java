@@ -13,6 +13,7 @@ public interface UserService {
     List<User> getAllUsers();
     User updateUser(String id, User user);
     void deleteUser(String id);
+    User authenticateUser(String email, String password);
 
 }
     
