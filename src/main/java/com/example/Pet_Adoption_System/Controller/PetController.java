@@ -28,5 +28,19 @@ public class PetController {
      return ResponseEntity.ok(addPet);
     }
 
+    @GetMapping("/availablePets")
+    public ResponseEntity<List<Pet>> getAvailablePets() {
+        List<Pet> availablePets = petService.getAvailablePets(false);
+        return ResponseEntity.ok(availablePets);
+    }
+
+    @GetMapping("/adoptPet/{id}")
+    public ResponseEntity<Pet> adoptPet(@PathVariable Integer id) {
+        Pet adoptedPet = petService.adoptPet(id);
+        return ResponseEntity.ok(adoptedPet);
+    }
+
+
+
     
 }

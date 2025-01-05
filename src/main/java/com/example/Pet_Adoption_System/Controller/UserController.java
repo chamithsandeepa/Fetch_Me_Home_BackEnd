@@ -51,5 +51,18 @@ public class UserController {
         }
         return ResponseEntity.status(401).body("Invalid credentials.");
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User updatedUser) {
+        User user = userService.updateUser(id, updatedUser);
+        return ResponseEntity.ok(user);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable String id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok().build();
+    }
+    
 }
 

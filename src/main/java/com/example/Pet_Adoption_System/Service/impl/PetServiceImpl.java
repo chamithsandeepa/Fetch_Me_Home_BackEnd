@@ -51,5 +51,17 @@ public class PetServiceImpl implements PetService {
     public void deletePet(Integer id) {
         petRepository.deleteById(id);
     }
-}
 
+    @Override
+    public List<Pet> getAvailablePets(Boolean adopted) {
+        return petRepository.findByAdopted(false);
+    }
+
+    @Override
+    public Pet adoptPet(Integer id) {
+        Pet pet = getPetById(id);
+        pet.setAdopted(true);
+        return petRepository.save(pet);
+    }
+
+}

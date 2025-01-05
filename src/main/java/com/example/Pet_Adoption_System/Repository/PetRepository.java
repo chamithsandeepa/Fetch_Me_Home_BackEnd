@@ -8,7 +8,12 @@ import java.util.List;
 
 @Repository
 public interface PetRepository extends MongoRepository<Pet, Integer> {
+    
     Pet findBySex(String sex);
+    
     Pet findByBreed(String breed);
+    
+    List<Pet> findByAdopted(boolean adopted);
+
 }
 

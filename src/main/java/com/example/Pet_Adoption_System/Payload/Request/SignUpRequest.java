@@ -21,7 +21,7 @@ public class SignUpRequest {
     @Size(min = 6, max = 40)
     private String password;
   
-    public String getName() {
+    public String getUsername() {
         return name;
     }
  

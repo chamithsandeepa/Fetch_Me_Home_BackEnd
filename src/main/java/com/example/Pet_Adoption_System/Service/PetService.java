@@ -12,6 +12,8 @@ public interface PetService {
     List<Pet> getAllPets();
     Pet updatePet(Integer id, Pet pet);
     void  deletePet(Integer id);
+    List<Pet> getAvailablePets(Boolean adopted);
+    Pet adoptPet(Integer id);
 
     
 }

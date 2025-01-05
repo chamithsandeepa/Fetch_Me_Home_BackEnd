@@ -21,7 +21,7 @@ public class Pet {
     private String breed;
     private Integer age;
     private String sex;
-    private String status;
+    private boolean adopted = false; //default: false
     private String description;
 
     //Getters and Setters
