@@ -13,9 +13,16 @@ public class PetSearch {
    @Autowired
     private PetSearchService petSearchService;
 
+   @GetMapping
+   public List<PetSearch> getAllPets(){
+       return petSearchService.getAllPets();
+   }
+
     @GetMapping("/filter")
-    public List<com.example.Pet_Adoption_System.Model.PetSearch> filterBySpecies(@RequestParam(required = false) String species) {
-        return petSearchService.filterBySpecies(species);
+    public List<com.example.Pet_Adoption_System.Model.PetSearch> filterpets
+            (@RequestParam(required = false) String species),
+    (@RequestParam(required = false) String gender) {
+        return petSearchService.filterPets(species,gender);
     }
 
 }

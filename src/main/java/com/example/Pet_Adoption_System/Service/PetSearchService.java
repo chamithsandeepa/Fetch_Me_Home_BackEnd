@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PetSearchService {
    List<PetSearch> filterBySpecies(String species);
+   List<PetSearch> filterByGender(String gender);
 }

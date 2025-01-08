@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PetSearchRepository extends MongoRepository<PetSearch, String>{
     List<PetSearch> findBySpecies(String species);
+    List<PetSearch> findByGender(String gender);
 }

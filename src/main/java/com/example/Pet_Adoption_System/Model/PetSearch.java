@@ -16,5 +16,7 @@ public class PetSearch {
     @Id
     private String id;
     private String species;
+    private String Gender;
+
 
 }
