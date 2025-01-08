@@ -12,24 +12,17 @@ import lombok.NoArgsConstructor;
 public class User {
     @Id
     private String id;
-    private String name; // Changed from separate firstName and lastName
+    private String name;
     private String email;
     private String password;
-    private String confirmPassword; // Add this field for password confirmation
+    private String confirmPassword;
+    private String role; // New field to differentiate between admin and user
 
-    // Getter for full name if needed
-    public String getFullName() {
-        return name;
-    }
 
-    // Getter for name
+
+// Getter for name
     public String getName() {
         return name;
-    }
-
-    // Setter for name
-    public void setName(String name) {
-        this.name = name;
     }
 
     // Getter for email
@@ -61,5 +54,15 @@ public class User {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    // Additional getters and setters if necessary
 }
+
 

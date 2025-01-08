@@ -1,4 +1,5 @@
 package com.example.Pet_Adoption_System.Controller;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import com.example.Pet_Adoption_System.Model.User;
 import com.example.Pet_Adoption_System.Service.UserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173") // Allow requests from React app
+@CrossOrigin // Allow requests from React app
 @RequestMapping("api/users")
 public class UserController {
 
@@ -24,31 +25,24 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
-        // Validate input
-        if (user.getName() == null || user.getEmail() == null || user.getPassword() == null || user.getConfirmPassword() == null) {
-            return ResponseEntity.badRequest().body("All fields are required.");
+        try {
+            User registeredUser = userService.registerUser(user);
+            return ResponseEntity.ok(registeredUser);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
-
-        // Check if password and confirmPassword match
-        if (!user.getPassword().equals(user.getConfirmPassword())) {
-            return ResponseEntity.badRequest().body("Passwords do not match.");
-        }
-
-        User registeredUser = userService.registerUser(user);
-        return ResponseEntity.ok(registeredUser);
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
-        if (user.getEmail() == null || user.getPassword() == null) {
-            return ResponseEntity.badRequest().body("Email and password are required.");
+        try {
+            User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
+            if (authenticatedUser != null) {
+                return ResponseEntity.ok(authenticatedUser);
+            }
+            return ResponseEntity.status(401).body("Invalid credentials.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
-
-        User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
-
-        if (authenticatedUser != null) {
-            return ResponseEntity.ok("Login successful. Welcome, " + authenticatedUser.getName() + "!");
-        }
-        return ResponseEntity.status(401).body("Invalid credentials.");
     }
 }

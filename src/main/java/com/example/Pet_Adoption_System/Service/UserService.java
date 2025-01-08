@@ -6,6 +6,7 @@ import com.example.Pet_Adoption_System.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -35,10 +36,9 @@ public class UserService {
     public User authenticateUser(String email, String password) {
         User user = userRepository.findByEmail(email);
 
-        // Verify the plain-text password (not secure; better to hash passwords in production)
         if (user != null && user.getPassword().equals(password)) {
-            return user;
+            return user; // Includes role in the response
         }
-        return null;
+        throw new RuntimeException("Invalid email or password.");
     }
 }
