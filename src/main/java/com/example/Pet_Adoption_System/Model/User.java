@@ -15,11 +15,28 @@ public class User {
     private String name; // Changed from separate firstName and lastName
     private String email;
     private String password;
-    private String confirmPassword; // Add this field for password confirmation
+    private String confirmPassword;
+    private String role;// Add this field for password confirmation
 
     // Getter for full name if needed
     public String getFullName() {
         return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     // Getter for name
@@ -36,6 +53,7 @@ public class User {
     public String getEmail() {
         return email;
     }
+
 
     // Setter for email
     public void setEmail(String email) {

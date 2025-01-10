@@ -47,7 +47,7 @@ public class UserController {
         User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
 
         if (authenticatedUser != null) {
-            return ResponseEntity.ok("Login successful. Welcome, " + authenticatedUser.getName() + "!");
+            return ResponseEntity.ok(authenticatedUser);
         }
         return ResponseEntity.status(401).body("Invalid credentials.");
     }
