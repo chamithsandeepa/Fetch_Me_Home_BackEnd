@@ -41,4 +41,19 @@ public class UserService {
         }
         return null;
     }
+
+    public User updateUser(String id, User user) {
+        User existingUser = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        existingUser.setName(user.getName());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPassword(user.getPassword()); // Ideally, hash the password before saving
+        return userRepository.save(existingUser);
+    }
+
+    public void deleteUser(String id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        userRepository.delete(user);
+    }
+
+
 }

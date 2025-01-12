@@ -51,4 +51,21 @@ public class UserController {
         }
         return ResponseEntity.status(401).body("Invalid credentials.");
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody User user) {
+        // Validate input
+        if (user.getName() == null || user.getEmail() == null || user.getPassword() == null) {
+            return ResponseEntity.badRequest().body("Name, email, and password are required.");
+        }
+
+        User updatedUser = userService.updateUser(id, user);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable String id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok("User deleted successfully.");
+    }
 }
