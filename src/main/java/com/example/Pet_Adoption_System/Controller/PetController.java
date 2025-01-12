@@ -1,20 +1,29 @@
 package com.example.Pet_Adoption_System.Controller;
-import java.util.List;
 
+import com.example.Pet_Adoption_System.Model.Pet;
+import com.example.Pet_Adoption_System.Service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.Pet_Adoption_System.Model.Pet;
-import com.example.Pet_Adoption_System.Service.PetService;
+import java.util.List;
 
 @RestController
+@RequestMapping("/api/pets")
 @CrossOrigin
-@RequestMapping("api/pets")
 public class PetController {
 
     @Autowired
     private PetService petService;
+
+    @PostMapping
+    public ResponseEntity<Pet> addPet(@RequestBody Pet pet) {
+        // Log received data for debugging
+        System.out.println("Received Pet: " + pet);
+
+        Pet savedPet = petService.addPet(pet);
+        return ResponseEntity.ok(savedPet);
+    }
 
     @GetMapping("/allPets")
     public ResponseEntity<List<Pet>> getAllPets() {
@@ -22,11 +31,15 @@ public class PetController {
         return ResponseEntity.ok(pets);
     }
 
-    @PostMapping("/addPet")
-    public ResponseEntity<Pet> addPet(@RequestBody Pet pet) {
-     Pet addPet = petService.addPet(pet);
-     return ResponseEntity.ok(addPet);
+    @GetMapping("/{id}")
+    public ResponseEntity<Pet> getPetById(@PathVariable String id) {
+        Pet pet = petService.getPetById(id);
+        return ResponseEntity.ok(pet);
     }
 
-    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePet(@PathVariable String id) {
+        petService.deletePet(id);
+        return ResponseEntity.ok().build();
+    }
 }
