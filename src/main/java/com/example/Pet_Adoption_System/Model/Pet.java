@@ -112,5 +112,6 @@ public class Pet {
         this.imageUrl = imageUrl;
     }
 
-    // Standard getters and setters (Lombok @Data already provides these)
 }
+
+

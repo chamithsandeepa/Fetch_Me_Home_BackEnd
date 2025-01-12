@@ -25,7 +25,7 @@ public class PetController {
         return ResponseEntity.ok(savedPet);
     }
 
-    @GetMapping
+    @GetMapping("/allPets")
     public ResponseEntity<List<Pet>> getAllPets() {
         List<Pet> pets = petService.getAllPets();
         return ResponseEntity.ok(pets);
