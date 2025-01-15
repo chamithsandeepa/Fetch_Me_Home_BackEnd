@@ -11,9 +11,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Document(collection = "Users")
 @Data
 @Getter
@@ -27,13 +24,6 @@ public class User {
     private String email;
     private String password;
     private String confirmPassword;
-    private ERole role;
-
-    @JsonIgnore
-    private List<Pet> adoptedPets = new ArrayList<>();
-    
-    private List<PetsDTO> favourites = new ArrayList<>();
-
     private ERole role;
 
 }
