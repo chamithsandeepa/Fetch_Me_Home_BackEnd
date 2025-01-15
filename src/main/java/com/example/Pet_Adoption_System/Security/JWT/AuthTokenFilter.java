@@ -20,7 +20,7 @@ import com.example.Pet_Adoption_System.Security.Services.UserDetailsServiceImpl;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
   @Autowired
-  private JwtUtils jwtUtils;
+  private JWTUtils jwtUtils;
 
   @Autowired
   private UserDetailsServiceImpl userDetailsService;
