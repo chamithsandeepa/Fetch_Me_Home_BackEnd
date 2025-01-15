@@ -8,29 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PetService {
+public interface PetService {
 
-    @Autowired
-    private PetRepository petRepository;
+    public Pet addPet(Pet pet);
+    public List<Pet> getAllPets();
 
-    public Pet addPet(Pet pet) {
-        // Log the pet details before saving
-        System.out.println("Saving Pet: " + pet);
+    public Pet getPetById(String id);
 
-        // Save the pet to the database
-        return petRepository.save(pet);
-    }
-
-    public List<Pet> getAllPets() {
-        return petRepository.findAll();
-    }
-
-    public Pet getPetById(String id) {
-        return petRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Pet not found"));
-    }
-
-    public void deletePet(String id) {
-        petRepository.deleteById(id);
-    }
+    public void deletePet(String id);
 }

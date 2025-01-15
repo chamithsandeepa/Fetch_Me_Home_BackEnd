@@ -33,13 +33,13 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public Pet getPetById(Integer id) {
+    public Pet getPetById(String id) {
         Optional<Pet> pet = petRepository.findById(id);
        return pet.orElse(null);
     }
 
     @Override
-    public Pet updatePet(Integer id, Pet pet) {
+    public Pet updatePet(String id, Pet pet) {
         if(petRepository.existsById(id)){
             pet.setId(id);
             return petRepository.save(pet);
@@ -48,7 +48,7 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public void deletePet(Integer id) {
+    public void deletePet(String id) {
         petRepository.deleteById(id);
     }
 }
