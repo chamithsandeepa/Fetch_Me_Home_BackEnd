@@ -17,8 +17,8 @@ import io.jsonwebtoken.security.Keys;
 
 
 @Component
-public class JwtUtils {
-  private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
+public class JWTUtils {
+  private static final Logger logger = LoggerFactory.getLogger(JWTUtils.class);
 
   @Value("${CRUD.app.jwtSecret}")
   private String jwtSecret;

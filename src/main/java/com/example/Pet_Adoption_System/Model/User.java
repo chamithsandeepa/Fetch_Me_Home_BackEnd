@@ -22,7 +22,7 @@ public class User {
     private String email;
     private String password;
     private String confirmPassword;
-    private String role;// Add this field for password confirmation
+    private ERole role;// Add this field for password confirmation
 
     // Getter for full name if needed
     public String getFullName() {
@@ -37,11 +37,11 @@ public class User {
         this.id = id;
     }
 
-    public String getRole() {
+    public ERole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(ERole role) {
         this.role = role;
     }
 
@@ -84,10 +84,6 @@ public class User {
     // Setter for confirmPassword
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
-    }
-  
-    private String role; // Add this field for password confirmation
-
-    
+    }   
 }
 
