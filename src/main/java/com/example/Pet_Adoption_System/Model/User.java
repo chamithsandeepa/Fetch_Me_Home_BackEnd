@@ -22,7 +22,7 @@ public class User {
     private String email;
     private String password;
     private String confirmPassword;
-    private String role; // Add this field for password confirmation
+    private ERole role; // Add this field for password confirmation
 
      
 }
