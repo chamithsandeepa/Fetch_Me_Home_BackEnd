@@ -18,10 +18,19 @@ public class PetSearchServiceImpl implements PetSearchService {
     private PetSearchRepository petSearchRepository;
 
     @Override
-    public List<PetSearch> filterBySpecies(String species, String gender) {
+    public List<PetSearch> filterPetBySpecies(String species) {
         return PetService.stream()
                 .filter(pet -> (species == null || pet.getSpecies().equalsIgnoreCase(species)) &&
                         (gender == null || pet.getGender().equalsIgnoreCase(gender)))
                 .collect(Collectors.toList());
 }
+
+@Override
+public List<PetSearch> filterPetByGender(String gender) {
+       return PetService.stream()
+       .filter(pet -> (gender == null || pet.getGender().equalsIgnoreCase(gender))&&
+       (species == null || pet.getSpecies().equalsIgnoreCase(species)))
+       .collect(Collectors.toList());
+}
+
 }
