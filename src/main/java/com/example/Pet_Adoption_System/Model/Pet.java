@@ -1,32 +1,23 @@
 package com.example.Pet_Adoption_System.Model;
 
-<<<<<<< HEAD
 import java.util.List;
 
-=======
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
->>>>>>> main
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
-<<<<<<< HEAD
+
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-=======
->>>>>>> main
 
 @Data
-<<<<<<< HEAD
 @Getter
 @NoArgsConstructor
 @Setter
-=======
-@Builder
 @Document(collection = "pets")
->>>>>>> main
 public class Pet {
     @Id
     private String id;
@@ -34,14 +25,11 @@ public class Pet {
     private String name;
     private String breed;
     private String sex;
-<<<<<<< HEAD
     private boolean adopted = false; //default: false
-=======
     private String age;
     private String color;
     private String location;
     private String contactNo;
->>>>>>> main
     private String description;
     private String imageUrl;
 
