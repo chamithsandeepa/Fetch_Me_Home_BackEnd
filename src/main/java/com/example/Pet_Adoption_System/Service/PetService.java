@@ -16,8 +16,6 @@ public class PetService {
     public Pet addPet(Pet pet) {
         // Log the pet details before saving
         System.out.println("Saving Pet: " + pet);
-
-        // Save the pet to the database
         return petRepository.save(pet);
     }
 
@@ -28,6 +26,25 @@ public class PetService {
     public Pet getPetById(String id) {
         return petRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Pet not found"));
+    }
+
+    public Pet updatePet(String id, Pet petDetails) {
+        Pet existingPet = petRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pet not found"));
+
+        // Update pet properties
+        existingPet.setName(petDetails.getName());
+        existingPet.setSpecies(petDetails.getSpecies());
+        existingPet.setAge(petDetails.getAge());
+        existingPet.setSex(petDetails.getSex());
+        existingPet.setBreed(petDetails.getBreed());
+        existingPet.setColor(petDetails.getColor());
+        existingPet.setLocation(petDetails.getLocation());
+        existingPet.setDescription(petDetails.getDescription());
+        existingPet.setImageUrl(petDetails.getImageUrl());
+
+        // Save updated pet
+        return petRepository.save(existingPet);
     }
 
     public void deletePet(String id) {
