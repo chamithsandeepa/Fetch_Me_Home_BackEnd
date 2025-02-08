@@ -19,8 +19,6 @@ public class ApplyPetController {
     @Autowired
     private ApplyPetService applyPetService;
 
-
-
     @Operation(
             summary = "POST operation on Apply Pets",
             description = "It is used to save Apply Pets in database"
@@ -30,11 +28,19 @@ public class ApplyPetController {
         return ResponseEntity.ok(applyPetService.saveApplication(applyPet));
     }
 
+    @Operation(
+            summary = "GET operation on Apply Pets",
+            description = "It is used to get Apply Pets from database"
+    )
     @GetMapping
     public ResponseEntity<List<ApplyPet>> getAllApplications() {
         return ResponseEntity.ok(applyPetService.getAllApplications());
     }
 
+    @Operation(
+            summary = "GET operation on Apply Pets",
+            description = "It is used to get Apply Pets from database"
+    )
     @GetMapping("/{id}")
     public ResponseEntity<ApplyPet> getApplicationById(@PathVariable String id) {
         ApplyPet applyPet = applyPetService.getApplicationById(id);
@@ -44,6 +50,10 @@ public class ApplyPetController {
         return ResponseEntity.notFound().build();
     }
 
+    @Operation(
+            summary = "PUT operation on Apply Pets",
+            description = "It is used to update Apply Pets details in database"
+    )
     @PutMapping("/{id}")
     public ResponseEntity<ApplyPet> updateApplication(
             @PathVariable String id, @RequestBody ApplyPet applyPet) {
@@ -51,6 +61,10 @@ public class ApplyPetController {
         return ResponseEntity.ok(applyPetService.saveApplication(applyPet));
     }
 
+    @Operation(
+            summary = "DELETE operation on Apply Pets",
+            description = "It is used to delete Apply Pets details in database"
+    )
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteApplication(@PathVariable String id) {
         applyPetService.deleteApplication(id);
