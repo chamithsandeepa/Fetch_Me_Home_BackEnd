@@ -1,6 +1,8 @@
 package com.example.Pet_Adoption_System.Controller;
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,17 +13,26 @@ import com.example.Pet_Adoption_System.Service.UserService;
 @RestController
 @CrossOrigin(origins = "http://localhost:5173") // Allow requests from React app
 @RequestMapping("api/users")
+@Tag(name="UserController",description="To perform operations on User")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    @Operation(
+            summary = "GET operation on User",
+            description = "It is used to get all Users in database"
+    )
     @GetMapping("/all")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
 
+    @Operation(
+            summary = "POST operation on User",
+            description = "It is used to save User in database"
+    )
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         // Validate input
@@ -38,6 +49,10 @@ public class UserController {
         return ResponseEntity.ok(registeredUser);
     }
 
+    @Operation(
+            summary = "POST operation on User",
+            description = "It is used to login operation on Users"
+    )
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
         if (user.getEmail() == null || user.getPassword() == null) {
@@ -52,6 +67,10 @@ public class UserController {
         return ResponseEntity.status(401).body("Invalid credentials.");
     }
 
+    @Operation(
+            summary = "PUT operation on User",
+            description = "It is used to update User details in database"
+    )
     @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody User user) {
         // Validate input
@@ -63,6 +82,10 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+    @Operation(
+            summary = "DELETE operation on User",
+            description = "It is used to delete User details in database"
+    )
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
