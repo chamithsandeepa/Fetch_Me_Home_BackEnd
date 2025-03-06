@@ -22,5 +22,3 @@
 - **Authentication:** JWT (JSON Web Token)
 - **Hosting:** Vercel
 
-## 🎯 Installation & Setup
-
