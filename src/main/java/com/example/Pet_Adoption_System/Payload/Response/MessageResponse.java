@@ -1,17 +1,17 @@
-package com.example.Pet_Adoption_System.Payload.Response;
+// package com.example.Pet_Adoption_System.Payload.Response;
 
-public class MessageResponse {
-	private String message;
+// public class MessageResponse {
+// 	private String message;
 
-	public MessageResponse(String message) {
-	    this.message = message;
-	  }
+// 	public MessageResponse(String message) {
+// 	    this.message = message;
+// 	  }
 
-	public String getMessage() {
-		return message;
-	}
+// 	public String getMessage() {
+// 		return message;
+// 	}
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
-}
+// 	public void setMessage(String message) {
+// 		this.message = message;
+// 	}
+// }

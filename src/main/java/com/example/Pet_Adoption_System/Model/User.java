@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -29,6 +30,8 @@ public class User {
   @Size(max = 120)
   private String password;
 
+  // Mark as transient so it doesn't get saved to the database
+  @Transient
   private String confirmPassword;
 
   @DBRef
@@ -83,18 +86,13 @@ public class User {
     this.roles = roles;
   }
 
+  // Getter for confirmPassword
+  public String getConfirmPassword() {
+    return confirmPassword;
+  }
 
-    // Getter for confirmPassword
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    // Setter for confirmPassword
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-  
-      }
- 
-    }
-
-
+  // Setter for confirmPassword
+  public void setConfirmPassword(String confirmPassword) {
+    this.confirmPassword = confirmPassword;
+  }
+}
