@@ -28,6 +28,10 @@ public class PetController {
         // Log received data for debugging
         System.out.println("Received Pet: " + pet);
 
+        if (pet.getImageUrl() == null || pet.getImageUrl().isEmpty()) {
+            System.out.println("Image URL is missing!");
+        }
+
         Pet savedPet = petService.addPet(pet);
         return ResponseEntity.ok(savedPet);
     }
