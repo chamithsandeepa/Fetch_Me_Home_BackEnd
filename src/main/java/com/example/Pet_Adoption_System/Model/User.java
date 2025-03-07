@@ -1,74 +1,88 @@
 package com.example.Pet_Adoption_System.Model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Document(collection = "Users")
-@Data
-@NoArgsConstructor
+@Document(collection = "users")
 public class User {
-    @Id
-    private String id;
-    private String name; // Changed from separate firstName and lastName
-    private String email;
-    private String password;
-    private String confirmPassword;
-    private String role;// Add this field for password confirmation
+  @Id
+  private String id;
 
-    // Getter for full name if needed
-    public String getFullName() {
-        return name;
-    }
+  @NotBlank
+  @Size(max = 20)
+  private String name;
 
-    public String getId() {
-        return id;
-    }
+  @NotBlank
+  @Size(max = 50)
+  @Email
+  private String email;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  @NotBlank
+  @Size(max = 120)
+  private String password;
 
-    public String getRole() {
-        return role;
-    }
+  private String confirmPassword;
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+  @DBRef
+  private Set<Role> roles = new HashSet<>();
 
-    // Getter for name
-    public String getName() {
-        return name;
-    }
+  public User() {
+  }
 
-    // Setter for name
-    public void setName(String name) {
-        this.name = name;
-    }
+  public User(String name, String email, String password) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+  }
 
-    // Getter for email
-    public String getEmail() {
-        return email;
-    }
+  public String getId() {
+    return id;
+  }
 
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    // Setter for email
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getName() {
+    return name;
+  }
 
-    // Getter for password
-    public String getPassword() {
-        return password;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    // Setter for password
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public Set<Role> getRoles() {
+    return roles;
+  }
+
+  public void setRoles(Set<Role> roles) {
+    this.roles = roles;
+  }
+
 
     // Getter for confirmPassword
     public String getConfirmPassword() {
@@ -78,6 +92,9 @@ public class User {
     // Setter for confirmPassword
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+  
+      }
+ 
     }
-}
+
 
