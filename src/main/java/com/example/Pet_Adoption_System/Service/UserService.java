@@ -2,6 +2,7 @@ package com.example.Pet_Adoption_System.Service;
 
 import com.example.Pet_Adoption_System.Model.User;
 import com.example.Pet_Adoption_System.Repository.UserRepository;
+import com.example.Pet_Adoption_System.Util.PasswordEncoderUtil; // Import the utility class
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,8 +11,12 @@ import java.util.List;
 
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoderUtil passwordEncoderUtil; // Inject the password encoder utility
 
     public User registerUser(User user) {
         // Check if email already exists
@@ -25,6 +30,11 @@ public class UserService {
             throw new RuntimeException("Passwords do not match.");
         }
 
+        // Hash the password before saving
+        String hashedPassword = passwordEncoderUtil.hashPassword(user.getPassword());
+        user.setPassword(hashedPassword);
+        user.setConfirmPassword(hashedPassword); // Optional: Clear confirmPassword after hashing
+
         return userRepository.save(user);
     }
 
@@ -35,18 +45,31 @@ public class UserService {
     public User authenticateUser(String email, String password) {
         User user = userRepository.findByEmail(email);
 
-        // Verify the plain-text password (not secure; better to hash passwords in production)
-        if (user != null && user.getPassword().equals(password)) {
-            return user;
+        if (user == null) {
+            throw new RuntimeException("User not found.");
         }
-        return null;
+
+        // Verify the hashed password
+        if (!passwordEncoderUtil.verifyPassword(password, user.getPassword())) {
+            throw new RuntimeException("Invalid credentials.");
+        }
+
+        return user;
     }
 
     public User updateUser(String id, User user) {
         User existingUser = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Update user details
         existingUser.setName(user.getName());
         existingUser.setEmail(user.getEmail());
-        existingUser.setPassword(user.getPassword()); // Ideally, hash the password before saving
+
+        // Hash the new password before saving (if password is being updated)
+        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+            String hashedPassword = passwordEncoderUtil.hashPassword(user.getPassword());
+            existingUser.setPassword(hashedPassword);
+        }
+
         return userRepository.save(existingUser);
     }
 
@@ -55,5 +78,8 @@ public class UserService {
         userRepository.delete(user);
     }
 
-
+    // Additional method to find user by email
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

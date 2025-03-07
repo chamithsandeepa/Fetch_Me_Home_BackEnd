@@ -1,6 +1,7 @@
 package com.example.Pet_Adoption_System.Controller;
 import java.util.List;
 
+import com.example.Pet_Adoption_System.Util.PasswordEncoderUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PasswordEncoderUtil passwordEncoderUtil; // Inject the password encoder
 
     @Operation(
             summary = "GET operation on User",
@@ -45,6 +49,11 @@ public class UserController {
             return ResponseEntity.badRequest().body("Passwords do not match.");
         }
 
+        // Hash the password before saving
+        String hashedPassword = passwordEncoderUtil.hashPassword(user.getPassword());
+        user.setPassword(hashedPassword);
+        user.setConfirmPassword(hashedPassword); // Optional: Clear confirmPassword after hashing
+
         User registeredUser = userService.registerUser(user);
         return ResponseEntity.ok(registeredUser);
     }
@@ -59,12 +68,18 @@ public class UserController {
             return ResponseEntity.badRequest().body("Email and password are required.");
         }
 
-        User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
+        // Fetch user by email
+        User existingUser = userService.findUserByEmail(user.getEmail());
 
-        if (authenticatedUser != null) {
-            return ResponseEntity.ok(authenticatedUser);
+        if (existingUser == null) {
+            return ResponseEntity.status(401).body("Invalid credentials.");
         }
-        return ResponseEntity.status(401).body("Invalid credentials.");
+        // Verify the password
+        if (!passwordEncoderUtil.verifyPassword(user.getPassword(), existingUser.getPassword())) {
+            return ResponseEntity.status(401).body("Invalid credentials.");
+        }
+
+        return ResponseEntity.ok(existingUser);
     }
 
     @Operation(
