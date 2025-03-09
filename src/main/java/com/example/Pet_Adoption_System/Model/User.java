@@ -3,26 +3,16 @@ package com.example.Pet_Adoption_System.Model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Document(collection = "Users")
-@Data
-@NoArgsConstructor
+@Document(collection = "users") // Specify the collection name
 public class User {
     @Id
     private String id;
-    private String name; // Changed from separate firstName and lastName
+    private String name;
     private String email;
     private String password;
-    private String confirmPassword;
-    private String role;// Add this field for password confirmation
+    //private String confirmPassword;
 
-    // Getter for full name if needed
-    public String getFullName() {
-        return name;
-    }
-
+    // Getters and Setters
     public String getId() {
         return id;
     }
@@ -31,53 +21,33 @@ public class User {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    // Getter for name
     public String getName() {
         return name;
     }
 
-    // Setter for name
     public void setName(String name) {
         this.name = name;
     }
 
-    // Getter for email
-    public String getEmail() {
-        return email;
-    }
-
-
-    // Setter for email
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    // Getter for password
     public String getPassword() {
         return password;
     }
 
-    // Setter for password
     public void setPassword(String password) {
         this.password = password;
     }
 
-    // Getter for confirmPassword
-    public String getConfirmPassword() {
-        return confirmPassword;
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    // Setter for confirmPassword
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
+    // public String getConfirmPassword() {
+    //     return confirmPassword;
+    // }
+    // public void setConfirmPassword(String confirmPassword) {
+    //     this.confirmPassword = confirmPassword;
+    // }
 }
-
