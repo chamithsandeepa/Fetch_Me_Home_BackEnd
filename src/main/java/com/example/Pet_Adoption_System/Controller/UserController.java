@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.*;
         return ResponseEntity.ok(users);
     }
 
-    @PostMapping("/admin_register")
+    @PostMapping
     public ResponseEntity<User> register(@RequestBody User user) {
         User registeredUser = userService.registerUser(user);
          return ResponseEntity.ok(registeredUser);
