@@ -34,7 +34,7 @@ import com.example.Pet_Adoption_System.Repository.RUserRepository;
 import com.example.Pet_Adoption_System.Security.JWT.JwtUtils;
 import com.example.Pet_Adoption_System.Security.Services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)//Allows requests from any origin
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
