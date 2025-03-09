@@ -1,6 +1,7 @@
 package com.example.Pet_Adoption_System.Payload.Request;
 
 import java.util.Set;
+import java.util.HashSet;
 
 import jakarta.validation.constraints.*;
 
@@ -14,7 +15,7 @@ public class SignUpRequest {
     @Email
     private String email;
     
-    private Set<String> roles;
+    private Set<String> roles = new HashSet<>();
     
     @NotBlank
     @Size(min = 6, max = 40)
@@ -48,7 +49,7 @@ public class SignUpRequest {
       return this.roles;
     }
     
-    public void setRole(Set<String> roles) {
+    public void setRoles(Set<String> roles) {
       this.roles = roles;
     }
 }

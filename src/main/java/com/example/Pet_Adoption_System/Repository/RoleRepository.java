@@ -9,4 +9,4 @@ import com.example.Pet_Adoption_System.Model.Role;
 
 public interface RoleRepository extends MongoRepository<Role, String> {
     Optional<Role> findByName(ERole name);
-  }
+}
