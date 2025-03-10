@@ -24,10 +24,11 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     // Injecting JwtUtils for handling JWT operations
     @Autowired
     private JwtUtils jwtUtils;
-  
+
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
-  
+
+           // Logger for error logging
     private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
   
     @Override
