@@ -26,6 +26,11 @@ public class JwtUtils {
   @Value("${CRUD.app.jwtExpirationMs}")
   private int jwtExpirationMs;
 
+  /**
+   * Method to generate a JWT token for the authenticated user
+   * @param authentication - the Authentication object containing user details
+   * @return JWT token as a string
+   */
   public String generateJwtToken(Authentication authentication) {
 
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
