@@ -41,7 +41,7 @@ public class JwtUtils {
         .setSubject((userPrincipal.getEmail())) // Set user email as subject
         .setIssuedAt(new Date()) // Set user email as subject
         .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs)) // Set token expiration time
-        .signWith(key(), SignatureAlgorithm.HS256)
+        .signWith(key(), SignatureAlgorithm.HS256) // Sign the token with the secret key using HMAC-SHA256 algorithm
         .compact();
   }
   
