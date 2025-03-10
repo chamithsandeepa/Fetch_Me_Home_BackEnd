@@ -39,10 +39,10 @@ import com.example.Pet_Adoption_System.Security.Services.UserDetailsImpl;
 @RequestMapping("/api/auth") // All routes in this controller will be prefixed with /api/auth
 public class AuthController {
     @Autowired
-    AuthenticationManager authenticationManager;
+    AuthenticationManager authenticationManager; // Used to manage authentication
 
     @Autowired
-    RUserRepository r_userRepository;
+    RUserRepository r_userRepository; 
 
     @Autowired
     RoleRepository roleRepository;
