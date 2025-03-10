@@ -34,9 +34,9 @@ import com.example.Pet_Adoption_System.Repository.RUserRepository;
 import com.example.Pet_Adoption_System.Security.JWT.JwtUtils;
 import com.example.Pet_Adoption_System.Security.Services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
-@RestController
-@RequestMapping("/api/auth")
+@CrossOrigin(origins = "*", maxAge = 3600) //Allowing cross-origin requests from all domains
+@RestController // Marks this class as a REST controller
+@RequestMapping("/api/auth") // All routes in this controller will be prefixed with /api/auth
 public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
