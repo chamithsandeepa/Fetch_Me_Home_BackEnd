@@ -20,6 +20,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.example.Pet_Adoption_System.Security.Services.UserDetailsServiceImpl;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
+       
+    // Injecting JwtUtils for handling JWT operations
     @Autowired
     private JwtUtils jwtUtils;
   
