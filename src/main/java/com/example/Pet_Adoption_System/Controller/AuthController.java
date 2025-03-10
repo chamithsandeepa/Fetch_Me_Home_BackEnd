@@ -52,7 +52,7 @@ public class AuthController {
 
 
     @Autowired
-    JwtUtils jwtUtils;
+    JwtUtils jwtUtils; // Utility class for handling JWT operations
 
     private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
