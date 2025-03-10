@@ -36,6 +36,7 @@ public class JwtUtils {
     // Retrieve user details from the authentication object (e.g., user email)
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
+    // Create and return a JWT token with user details, issued time, and expiration time
     return Jwts.builder()
         .setSubject((userPrincipal.getEmail()))
         .setIssuedAt(new Date())
