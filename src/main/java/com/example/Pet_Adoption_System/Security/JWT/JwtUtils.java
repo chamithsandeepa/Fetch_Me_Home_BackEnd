@@ -38,7 +38,7 @@ public class JwtUtils {
 
     // Create and return a JWT token with user details, issued time, and expiration time
     return Jwts.builder()
-        .setSubject((userPrincipal.getEmail()))
+        .setSubject((userPrincipal.getEmail())) // Set user email as subject
         .setIssuedAt(new Date())
         .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
         .signWith(key(), SignatureAlgorithm.HS256)
