@@ -99,8 +99,7 @@ public class AuthController {
                         .badRequest()
                         .body(new MessageResponse("Error: Email is already in use!"));
             }
-
-            // Create new user's account
+// Create a new user and encode the password before saving it
             RUser r_user = new RUser(signUpRequest.getUsername(),
                     signUpRequest.getEmail(),
                     encoder.encode(signUpRequest.getPassword()));
