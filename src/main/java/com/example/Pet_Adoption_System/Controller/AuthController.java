@@ -45,10 +45,11 @@ public class AuthController {
     RUserRepository r_userRepository; // Repository to interact with user data in the database
 
     @Autowired
-    RoleRepository roleRepository;
+    RoleRepository roleRepository; // Repository to interact with roles in the database
 
     @Autowired
-    PasswordEncoder encoder;
+    PasswordEncoder encoder; // Encoder to encode passwords
+
 
     @Autowired
     JwtUtils jwtUtils;
