@@ -59,11 +59,12 @@ public class AuthTokenFilter extends OncePerRequestFilter {
       } catch (Exception e) {
         logger.error("Cannot set user authentication: {}", e);
       }
-  
-      filterChain.doFilter(request, response);
+            // Continue with the filter chain after authentication check
+               filterChain.doFilter(request, response);
     }
-  
+      // Method to extract the JWT from the Authorization header
     private String parseJwt(HttpServletRequest request) {
+       // Retrieve the Authorization header from the request
       String headerAuth = request.getHeader("Authorization");
   
       if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
