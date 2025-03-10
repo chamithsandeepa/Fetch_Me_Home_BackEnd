@@ -19,6 +19,7 @@ public class JwtUtils {
   // Logger to log messages and errors related to JWT operations
   private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
+  // Injecting values for secret key and expiration time from application properties
   @Value("${CRUD.app.jwtSecret}")
   private String jwtSecret;
 
