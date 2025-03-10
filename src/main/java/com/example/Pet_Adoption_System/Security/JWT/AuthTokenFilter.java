@@ -39,11 +39,12 @@ public class AuthTokenFilter extends OncePerRequestFilter {
       try {
                      // Extract the JWT from the request
         String jwt = parseJwt(request);
-                     // If the JWT exists and is valid
+                     
+             // If the JWT exists and is valid
         if (StringUtils.hasText(jwt) && jwtUtils.validateJwtToken(jwt)) {
-                      // Extract username from the valid JWT
+              // Extract username from the valid JWT
           String username = jwtUtils.getUserNameFromJwtToken(jwt);
-  
+            // Load user details using the username
           UserDetails userDetails = userDetailsService.loadUserByUsername(username);
           UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null,
               userDetails.getAuthorities());
