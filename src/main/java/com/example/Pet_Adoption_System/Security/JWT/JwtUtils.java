@@ -33,6 +33,7 @@ public class JwtUtils {
    */
   public String generateJwtToken(Authentication authentication) {
 
+    // Retrieve user details from the authentication object (e.g., user email)
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
     return Jwts.builder()
