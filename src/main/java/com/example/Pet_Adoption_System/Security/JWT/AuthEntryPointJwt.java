@@ -17,6 +17,16 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 	    // Logger for logging unauthorized access errors
 	private static final Logger logger = LoggerFactory.getLogger(AuthEntryPointJwt.class);
 
+	/**
+     * This method is called when an authentication exception is thrown.
+     * It handles the error and sends a response to the client.
+     * @param request - the HTTP request
+     * @param response - the HTTP response
+     * @param authException - the exception that caused the authentication error
+     * @throws IOException - if an input or output exception occurs
+     * @throws ServletException - if a servlet-specific error occurs
+     */
+
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
