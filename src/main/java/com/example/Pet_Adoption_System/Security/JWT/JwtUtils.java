@@ -50,6 +50,7 @@ public class JwtUtils {
    * @return Key object used for signing and verifying JWT
    */
   private Key key() {
+    // Decode the Base64 encoded JWT secret key to create a signing key
     return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
   }
 
