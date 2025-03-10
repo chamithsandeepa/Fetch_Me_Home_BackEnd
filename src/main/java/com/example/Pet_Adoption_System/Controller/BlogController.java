@@ -20,7 +20,7 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
-    // Admin-only endpoints.............
+    // Admin-only endpoints
     @Operation(
             summary = "POST operation on Blogs",
             description = "It is used to save Blogs in database"
