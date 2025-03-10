@@ -16,6 +16,7 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtUtils {
+  // Logger to log messages and errors related to JWT operations
   private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
   @Value("${CRUD.app.jwtSecret}")
