@@ -31,7 +31,8 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
            // Logger for error logging
     private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
-  
+
+           // Overriding doFilterInternal to filter each request
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
         throws ServletException, IOException {
