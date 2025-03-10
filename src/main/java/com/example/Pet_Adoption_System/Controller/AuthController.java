@@ -42,7 +42,7 @@ public class AuthController {
     AuthenticationManager authenticationManager; // Used to manage authentication
 
     @Autowired
-    RUserRepository r_userRepository; 
+    RUserRepository r_userRepository; // Repository to interact with user data in the database
 
     @Autowired
     RoleRepository roleRepository;
