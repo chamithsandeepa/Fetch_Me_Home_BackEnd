@@ -44,7 +44,11 @@ public class JwtUtils {
         .signWith(key(), SignatureAlgorithm.HS256) // Sign the token with the secret key using HMAC-SHA256 algorithm
         .compact(); // Return the generated JWT token
   }
-  
+
+  /**
+   * Method to return the signing key used to create and verify JWT tokens
+   * @return Key object used for signing and verifying JWT
+   */
   private Key key() {
     return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
   }
