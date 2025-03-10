@@ -25,6 +25,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUtils jwtUtils;
 
+    // Injecting UserDetailsServiceImpl to load user details by username
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
